@@ -17,23 +17,27 @@ namespace GerenciadorImoveis.Dominio.Entidades
         public UF UF { get; private set; }
         public string Cep { get; private set; }
         public ICollection<Cliente> Clientes { get; private set; }
-        public long ImovelId { get; private set; }
-        public Imovel Imovel { get; private set; }
+        public long? ImovelId { get; private set; }
+        public Imovel? Imovel { get; private set; }
+        public ICollection<Evento> Eventos { get; private set; }
         #endregion
         #region Construtores
-        public Endereco(string logradouro, string bairro, string cidade, UF uf, string cep, Usuario cadastradoPor)
+        public Endereco(string logradouro, string bairro, string cidade, UF uf, string cep)
         {
             Logradouro = logradouro;
             Bairro = bairro;
             Cidade = cidade;
             UF = uf;
-            Cep = cep;
-            CadastradoPor = cadastradoPor;
+            Cep = cep;            
             Ativo = true;
+            Clientes = new HashSet<Cliente>();
+            Eventos = new HashSet<Evento>();
         }
         public Endereco()
         {
             Ativo = true;
+            Clientes = new HashSet<Cliente>();
+            Eventos = new HashSet<Evento>();
         }
 
         #endregion

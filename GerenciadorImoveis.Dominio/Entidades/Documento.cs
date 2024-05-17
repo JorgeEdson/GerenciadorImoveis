@@ -7,21 +7,23 @@ namespace GerenciadorImoveis.Dominio.Entidades
         #region Propriedades
         public string Identificador { get; private set; }
         public TipoDocumento TipoDocumento { get; private set; }
-        public long ClienteId { get; private set; } 
-        public Cliente Cliente { get; private set; }
+        public long? ClienteId { get; private set; } 
+        public Cliente? Cliente { get; private set; }
+        public ICollection<Evento> Eventos { get; private set; }
         #endregion
 
         #region Construtores
-        public Documento(string identificador, TipoDocumento tipoDocumento, Usuario cadastradoPor)
+        public Documento(string identificador, TipoDocumento tipoDocumento)
         {
             Identificador = identificador;
-            TipoDocumento = tipoDocumento;
-            CadastradoPor = cadastradoPor;
+            TipoDocumento = tipoDocumento;            
             Ativo = true;
+            Eventos = new HashSet<Evento>();
         }
         public Documento()
         {
             Ativo = true;
+            Eventos = new HashSet<Evento>();
         }
         #endregion
 
@@ -33,6 +35,11 @@ namespace GerenciadorImoveis.Dominio.Entidades
         public void AlterarTipoDocumento(TipoDocumento tipoDocumento)
         {
             TipoDocumento = tipoDocumento;
+        }
+        public void VincularCliente(Cliente cliente)
+        {
+            //Cliente = cliente;
+            ClienteId = cliente.Id;
         }
         #endregion
 

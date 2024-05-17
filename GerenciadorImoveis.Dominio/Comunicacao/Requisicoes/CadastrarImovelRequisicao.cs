@@ -1,19 +1,19 @@
 ﻿namespace GerenciadorImoveis.Dominio.Comunicacao.Requisicoes
 {
-    public struct CadastrarImovelRequisicao
+    public class CadastrarImovelRequisicao
     {
-        public long CadastradoPorId;
-        public int TipoImovel;
-        public int ImovelStatus;
-        public long ProprietarioId;
-        public string Logradouro;
-        public string Bairro;
-        public string Cidade;
-        public int UF;
-        public string Cep;
-        public decimal AreaTerreno;
-        public decimal AreaEdificacao;
-        public decimal ValorAquisicao;
-        public string DataAquisicao;
+        public long CadastradoPorId { get; set; }
+        public int TipoImovel { get; set; }
+        public int ImovelStatus { get; set; }
+        public long ProprietarioId { get; set; }
+        public string Logradouro { get; set; }
+        public string Bairro { get; set; }
+        public string Cidade { get; set; }
+        public int UF { get; set; }
+        public string Cep { get; set; }
+        public decimal AreaTerreno { get; set; }
+        public decimal AreaEdificacao { get; set; }
+        public decimal ValorAquisicao { get; set; }
+        public string DataAquisicao { get; set; }
     }
 }

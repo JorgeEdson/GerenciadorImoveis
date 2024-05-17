@@ -1,11 +1,6 @@
 ﻿using GerenciadorImoveis.Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GerenciadorImoveis.Infraestrutura.Mapeamentos
 {
@@ -16,18 +11,49 @@ namespace GerenciadorImoveis.Infraestrutura.Mapeamentos
             //campos entidade base
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.DataCadastro).IsRequired();
-            builder.Property(x => x.DataAtualizacao).IsRequired(false);
             builder.Property(x => x.Ativo).IsRequired();
 
             //campos entidade
-            builder.Property(x => x.Descricao).IsRequired();
+            builder.Property(x => x.Mensagem).IsRequired();
+            builder.Property(x => x.DataOcorrencia).IsRequired();
+            builder.Property(x => x.TipoEvento).IsRequired();
+
 
             //Chaves estrangeiras
-            builder.HasOne(x => x.CadastradoPor)
+            builder.HasOne(x => x.UsuarioAcao)
             .WithMany(x => x.Eventos)
-            .HasForeignKey(x => x.CadastradoPorId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .HasForeignKey(x => x.UsuarioId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.Cliente)
+            .WithMany(x => x.Eventos)
+            .HasForeignKey(x => x.ClienteId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.Endereco)
+            .WithMany(x => x.Eventos)
+            .HasForeignKey(x => x.EnderecoId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.Imovel)
+            .WithMany(x => x.Eventos)
+            .HasForeignKey(x => x.ImovelId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.Arquivo)
+            .WithMany(x => x.Eventos)
+            .HasForeignKey(x => x.ArquivoId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.Matricula)
+          .WithMany(x => x.Eventos)
+          .HasForeignKey(x => x.MatriculaId)
+          .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(x => x.Planta)
+          .WithMany(x => x.Eventos)
+          .HasForeignKey(x => x.PlantaId)
+          .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

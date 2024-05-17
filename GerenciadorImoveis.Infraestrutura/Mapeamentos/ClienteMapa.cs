@@ -11,8 +11,6 @@ namespace GerenciadorImoveis.Infraestrutura.Mapeamentos
            //campos entidade base
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.DataCadastro).IsRequired();
-            builder.Property(x => x.DataAtualizacao).IsRequired(false);
             builder.Property(x => x.Ativo).IsRequired();
 
             //campos entidade
@@ -31,15 +29,7 @@ namespace GerenciadorImoveis.Infraestrutura.Mapeamentos
             .HasForeignKey(x => x.EnderecoId)
             .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(x => x.CadastradoPor)
-           .WithMany(x => x.ClientesCadastrados)
-           .HasForeignKey(x => x.CadastradoPorId)
-           .OnDelete(DeleteBehavior.NoAction);
-
-            builder.HasOne(x => x.AtualizadoPor)
-            .WithMany(x => x.ClientesAlterados)
-            .HasForeignKey(x => x.AtualizadoPorId)
-            .OnDelete(DeleteBehavior.NoAction);
+            
 
 
         }

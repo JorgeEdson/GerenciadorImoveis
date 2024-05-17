@@ -19,7 +19,7 @@ namespace GerenciadorImoveis.API.Controllers
             listaArquivos.Add(matricula);
             
             if (planta != null)
-                listaArquivos.Add(planta);
+                listaArquivos.Add(planta); 
 
             var resultado = await imovelManipulador.Executar(requisicao,listaArquivos);
 

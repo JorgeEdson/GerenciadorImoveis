@@ -29,6 +29,7 @@ builder.Services.AddScoped<IArquivoRepositorio, ArquivoRepositorio>();
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 builder.Services.AddScoped<IImovelRepositorio, ImovelRepositorio>();
 builder.Services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
+builder.Services.AddScoped<IDocumentoRepositorio, DocumentoRepositorio>();
 builder.Services.AddScoped<IEnderecoRepositorio, EnderecoRepositorio>();
 builder.Services.AddScoped<IMatriculaRepositorio, MatriculaRepositorio>();
 builder.Services.AddScoped<IPlantaRepositorio, PlantaRepositorio>();

@@ -8,20 +8,22 @@ namespace GerenciadorImoveis.Dominio.Entidades
         #region Propriedades
         public string Caminho { get; private set; }
         public TipoArquivo TipoArquivo { get; private set; }
+        public ICollection<Evento> Eventos { get; private set; }
         #endregion
 
         #region Construtores        
-        public Arquivo(TipoArquivo tipoArquivo,Usuario cadastradoPor)
+        public Arquivo(TipoArquivo tipoArquivo)
         {
             Caminho = string.Empty;
-            TipoArquivo = tipoArquivo;
-            CadastradoPor = cadastradoPor;
+            TipoArquivo = tipoArquivo;            
             Ativo = true;
+            Eventos = new HashSet<Evento>();
         }
         public Arquivo()
         {
             Caminho = string.Empty;
             Ativo = true;
+            Eventos = new HashSet<Evento>();
         }
         #endregion
 
@@ -31,8 +33,5 @@ namespace GerenciadorImoveis.Dominio.Entidades
             Caminho = caminho;
         }
         #endregion
-
-
-
     }
 }

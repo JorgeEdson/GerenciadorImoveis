@@ -11,24 +11,15 @@ namespace GerenciadorImoveis.Infraestrutura.Mapeamentos
         {
             //campos entidade base
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.DataCadastro).IsRequired();
-            builder.Property(x => x.DataAtualizacao).IsRequired(false);
+            builder.Property(x => x.Id).UseIdentityColumn();            
             builder.Property(x => x.Ativo).IsRequired();
 
             //campos entidade
             builder.Property(x => x.Caminho).IsRequired();
+            builder.Property(x => x.TipoArquivo).IsRequired();
 
             //Chaves estrangeiras
-            builder.HasOne(x => x.CadastradoPor)
-           .WithMany(x => x.ArquivosCadastrados)
-           .HasForeignKey(x => x.CadastradoPorId)
-           .OnDelete(DeleteBehavior.NoAction);
 
-            builder.HasOne(x => x.AtualizadoPor)
-            .WithMany(x => x.ArquivosAlterados)
-            .HasForeignKey(x => x.AtualizadoPorId)
-            .OnDelete(DeleteBehavior.NoAction); 
         }
     }
 }

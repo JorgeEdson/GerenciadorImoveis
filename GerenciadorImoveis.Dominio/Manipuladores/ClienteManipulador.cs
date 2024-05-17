@@ -69,8 +69,7 @@ namespace GerenciadorImoveis.Dominio.Manipuladores
             documento = new Documento
                 (
                     requisicao.DocumentoIdentificador,
-                    (TipoDocumento)requisicao.TipoDocumento,
-                    usuarioResponsavel
+                    (TipoDocumento)requisicao.TipoDocumento                    
                 );
 
             //salvar documento
@@ -85,8 +84,7 @@ namespace GerenciadorImoveis.Dominio.Manipuladores
                     requisicao.Bairro,
                     requisicao.Cidade,
                     (UF)requisicao.UF,
-                    requisicao.Cep,
-                    usuarioResponsavel
+                    requisicao.Cep                    
                 );
 
             //salvar endereco
@@ -101,8 +99,7 @@ namespace GerenciadorImoveis.Dominio.Manipuladores
                     requisicao.Nacionalidade,
                     requisicao.Profissao,
                     documento,
-                    endereco,
-                    usuarioResponsavel
+                    endereco                    
                 );
 
             //salvar cliente
@@ -115,7 +112,8 @@ namespace GerenciadorImoveis.Dominio.Manipuladores
                 (
                     usuarioResponsavel,
                     DateTime.Now,
-                    $"Cadastro - Cliente: {cliente.Nome} | Documento: {documento.Identificador}"
+                    $"Cadastro - Cliente: {cliente.Nome} | Documento: {documento.Identificador}",
+                    TipoEvento.CADASTRO
                 );
 
             //salvar evento

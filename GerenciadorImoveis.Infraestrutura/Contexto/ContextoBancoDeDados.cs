@@ -1,7 +1,6 @@
 ﻿using GerenciadorImoveis.Dominio.Ajudantes;
 using GerenciadorImoveis.Dominio.Entidades;
 using GerenciadorImoveis.Dominio.Enumeradores;
-using GerenciadorImoveis.Dominio.Interfaces;
 using GerenciadorImoveis.Infraestrutura.Mapeamentos;
 using Microsoft.EntityFrameworkCore;
 
@@ -49,13 +48,35 @@ namespace GerenciadorImoveis.Infraestrutura.Contexto
             modelBuilder.ApplyConfiguration(new MatriculaMapa());
             modelBuilder.ApplyConfiguration(new EventoMapa());
 
-            var superUsuario = new Usuario("UsuarioMaster",               
-                Encriptacao.AdicionarCriptografia("admin123"),                
-               TipoUsuario.ADMINISTRADOR);
-
+            var superUsuario = new Usuario
+                (
+                    "UsuarioMaster",
+                    Encriptacao.AdicionarCriptografia("admin123"),
+                    TipoUsuario.ADMINISTRADOR
+                );
             superUsuario.Id = 1;
-
             modelBuilder.Entity<Usuario>().HasData(superUsuario);
+            /*
+            var documentoTeste = new Documento("123456789", TipoDocumento.CPF);
+            documentoTeste.Id = 1;
+
+            var enderecoTeste = new Endereco("Rua 1", "Bairro 1", "Cidade 1", UF.CE, "12345678");
+            enderecoTeste.Id = 1;
+
+            var clienteTeste = new Cliente
+                (
+                    "Cliente 1",
+                    "Brasileiro",
+                    "Desenvolvedor",
+                    documentoTeste,
+                    enderecoTeste
+                );
+            clienteTeste.Id = 1;
+
+            
+            modelBuilder.Entity<Documento>().HasData(documentoTeste);
+            modelBuilder.Entity<Endereco>().HasData(enderecoTeste);
+            modelBuilder.Entity<Cliente>().HasData(clienteTeste);*/
         }
     }
 }
