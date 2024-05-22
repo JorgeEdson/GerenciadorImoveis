@@ -1,0 +1,72 @@
+﻿@model GerenciadorImoveis.Dominio.Comunicacao.Requisicoes.CadastrarImovelRequisicao
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h2>Cadastrar Imóvel</h2>
+
+@using (Html.BeginForm("Cadastrar", "Imovel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <label for="matricula">Matrícula</label>
+        <input type="file" class="form-control" name="matricula" />
+    </div>
+    <div class="form-group">
+        <label for="planta">Planta (Opcional)</label>
+        <input type="file" class="form-control" name="planta" />
+    </div>
+    <div class="form-group">
+        <label for="CadastradoPorId">Cadastrado Por</label>
+        <input type="number" class="form-control" asp-for="CadastradoPorId" />
+    </div>
+    <div class="form-group">
+        <label for="TipoImovel">Tipo Imóvel</label>
+        <input type="number" class="form-control" asp-for="TipoImovel" />
+    </div>
+    <div class="form-group">
+        <label for="ImovelStatus">Status do Imóvel</label>
+        <input type="number" class="form-control" asp-for="ImovelStatus" />
+    </div>
+    <div class="form-group">
+        <label for="ProprietarioId">Proprietário</label>
+        <input type="number" class="form-control" asp-for="ProprietarioId" />
+    </div>
+    <div class="form-group">
+        <label for="Logradouro">Logradouro</label>
+        <input type="text" class="form-control" asp-for="Logradouro" />
+    </div>
+    <div class="form-group">
+        <label for="Bairro">Bairro</label>
+        <input type="text" class="form-control" asp-for="Bairro" />
+    </div>
+    <div class="form-group">
+        <label for="Cidade">Cidade</label>
+        <input type="text" class="form-control" asp-for="Cidade" />
+    </div>
+    <div class="form-group">
+        <label for="UF">UF</label>
+        <input type="number" class="form-control" asp-for="UF" />
+    </div>
+    <div class="form-group">
+        <label for="Cep">CEP</label>
+        <input type="text" class="form-control" asp-for="Cep" />
+    </div>
+    <div class="form-group">
+        <label for="AreaTerreno">Área do Terreno</label>
+        <input type="number" class="form-control" asp-for="AreaTerreno" />
+    </div>
+    <div class="form-group">
+        <label for="AreaEdificacao">Área da Edificação</label>
+        <input type="number" class="form-control" asp-for="AreaEdificacao" />
+    </div>
+    <div class="form-group">
+        <label for="ValorAquisicao">Valor de Aquisição</label>
+        <input type="number" class="form-control" asp-for="ValorAquisicao" />
+    </div>
+    <div class="form-group">
+        <label for="DataAquisicao">Data de Aquisição</label>
+        <input type="date" class="form-control" asp-for="DataAquisicao" />
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+}
