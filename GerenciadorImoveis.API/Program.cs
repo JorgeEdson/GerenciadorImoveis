@@ -1,13 +1,38 @@
+using GerenciadorImoveis.API;
 using GerenciadorImoveis.Dominio.Interfaces;
 using GerenciadorImoveis.Dominio.Interfaces.Repositorios;
 using GerenciadorImoveis.Dominio.Manipuladores;
 using GerenciadorImoveis.Infraestrutura.Contexto;
 using GerenciadorImoveis.Infraestrutura.EntradaSaida;
 using GerenciadorImoveis.Infraestrutura.Repositorios;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configuração do JWT
+var key = Encoding.ASCII.GetBytes(Configuracoes.ChaveJwt );
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(key)
+    };
+});
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -50,6 +75,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

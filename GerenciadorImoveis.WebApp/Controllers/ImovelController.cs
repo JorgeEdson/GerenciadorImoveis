@@ -50,7 +50,7 @@ namespace GerenciadorImoveis.WebApp.Controllers
                     plantaPart = new StreamPart(planta.OpenReadStream(), planta.FileName, planta.ContentType);
                 }
 
-                var response = await _imovelApi.CadastrarImovel(
+                var resposta = await _imovelApi.CadastrarImovel(
                     matriculaPart,
                     plantaPart,
                     requisicao.CadastradoPorId,
@@ -67,7 +67,7 @@ namespace GerenciadorImoveis.WebApp.Controllers
                     requisicao.DataAquisicao
                 );
 
-                if (response.IsSuccessStatusCode)
+                if (resposta.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Sucesso");
                 }
