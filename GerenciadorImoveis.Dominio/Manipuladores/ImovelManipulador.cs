@@ -29,19 +29,19 @@ namespace GerenciadorImoveis.Dominio.Manipuladores
                 #region Validacao requisicao
                 bool requisicaoValida;
                 if (
-                        requisicao.CadastradoPorId == 0 ||
-                        requisicao.TipoImovel == 0 ||
-                        requisicao.ImovelStatus == 0 ||
-                        requisicao.ProprietarioId == 0 ||
-                        string.IsNullOrEmpty(requisicao.Logradouro) ||
-                        string.IsNullOrEmpty(requisicao.Bairro) ||
-                        string.IsNullOrEmpty(requisicao.Cidade) ||
-                        requisicao.UF == 0 ||
-                        string.IsNullOrEmpty(requisicao.Cep) ||
-                        requisicao.AreaTerreno == 0 ||
-                        requisicao.ValorAquisicao == 0 ||
-                        string.IsNullOrEmpty(requisicao.DataAquisicao)
-                    )
+                    requisicao.CadastradoPorId == 0 ||
+                    requisicao.TipoImovel == 0 ||
+                    requisicao.ImovelStatus == 0 ||
+                    requisicao.ProprietarioId == 0 ||
+                    string.IsNullOrEmpty(requisicao.Logradouro) ||
+                    string.IsNullOrEmpty(requisicao.Bairro) ||
+                    string.IsNullOrEmpty(requisicao.Cidade) ||
+                    requisicao.UF == 0 ||
+                    string.IsNullOrEmpty(requisicao.Cep) ||
+                    requisicao.AreaTerreno == 0 ||
+                    requisicao.ValorAquisicao == 0 ||
+                    string.IsNullOrEmpty(requisicao.DataAquisicao)
+                   )
                     requisicaoValida = false;
                 else
                     requisicaoValida = true;

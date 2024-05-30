@@ -1,7 +1,10 @@
 ﻿using GerenciadorImoveis.Dominio.Comunicacao.Requisicoes;
+using GerenciadorImoveis.Dominio.Enumeradores;
+using GerenciadorImoveis.WebApp.Extensoes;
 using GerenciadorImoveis.WebApp.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
+using System.Security.Claims;
 
 namespace GerenciadorImoveis.WebApp.Controllers
 {
@@ -16,6 +19,15 @@ namespace GerenciadorImoveis.WebApp.Controllers
         [HttpGet]
         public IActionResult Cadastrar()
         {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                return Unauthorized();
+            }
+
+            ViewBag.CadastradoPorId = userIdClaim.Value;
+            ViewBag.TipoImovelList = EnumeradorExtensao.ToSelectList<TipoImovel>();
+            ViewBag.UFList = EnumeradorExtensao.ToSelectList<UF>();
             return View();
         }
 
@@ -42,8 +54,7 @@ namespace GerenciadorImoveis.WebApp.Controllers
                     matriculaPart,
                     plantaPart,
                     requisicao.CadastradoPorId,
-                    requisicao.TipoImovel,
-                    requisicao.ImovelStatus,
+                    requisicao.TipoImovel,                    
                     requisicao.ProprietarioId,
                     requisicao.Logradouro,
                     requisicao.Bairro,

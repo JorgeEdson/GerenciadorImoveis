@@ -21,6 +21,7 @@ builder.Services.AddDbContext<ContextoBancoDeDados>(options =>
 
 //manipuladores
 builder.Services.AddScoped<IManipularArquivo, ManipularArquivo>();
+builder.Services.AddScoped<UsuarioManipulador>();
 builder.Services.AddScoped<ClienteManipulador>();
 builder.Services.AddScoped<ImovelManipulador>();
 

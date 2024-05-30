@@ -15,19 +15,11 @@
     <div class="form-group">
         <label for="planta">Planta (Opcional)</label>
         <input type="file" class="form-control" name="planta" />
-    </div>
-    <div class="form-group">
-        <label for="CadastradoPorId">Cadastrado Por</label>
-        <input type="number" class="form-control" asp-for="CadastradoPorId" />
-    </div>
+    </div>    
     <div class="form-group">
         <label for="TipoImovel">Tipo Imóvel</label>
-        <input type="number" class="form-control" asp-for="TipoImovel" />
-    </div>
-    <div class="form-group">
-        <label for="ImovelStatus">Status do Imóvel</label>
-        <input type="number" class="form-control" asp-for="ImovelStatus" />
-    </div>
+        @Html.DropDownListFor(m => m.TipoImovel, (IEnumerable<SelectListItem>)ViewBag.TipoImovelList, "Selecione o tipo de imóvel", new { @class = "form-control" })
+    </div>    
     <div class="form-group">
         <label for="ProprietarioId">Proprietário</label>
         <input type="number" class="form-control" asp-for="ProprietarioId" />
@@ -46,7 +38,7 @@
     </div>
     <div class="form-group">
         <label for="UF">UF</label>
-        <input type="number" class="form-control" asp-for="UF" />
+        @Html.DropDownListFor(m => m.UF, (IEnumerable<SelectListItem>)ViewBag.UFList, "UF", new { @class = "form-control" })
     </div>
     <div class="form-group">
         <label for="Cep">CEP</label>
@@ -68,5 +60,12 @@
         <label for="DataAquisicao">Data de Aquisição</label>
         <input type="date" class="form-control" asp-for="DataAquisicao" />
     </div>
+    <input type="hidden" asp-for="CadastradoPorId" id="CadastradoPorId" />
     <button type="submit" class="btn btn-primary">Cadastrar</button>
+}
+
+@section Scripts {
+    <script>
+        document.getElementById("CadastradoPorId").value = '@ViewBag.CadastradoPorId';
+    </script>
 }

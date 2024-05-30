@@ -7,6 +7,7 @@ namespace GerenciadorImoveis.Dominio.Enumeradores
         CADASTRO,
         ALTERACAO,
         INATIVACAO,
-        ATIVACAO
+        ATIVACAO,
+        AUTENTICACAO
     }
 }

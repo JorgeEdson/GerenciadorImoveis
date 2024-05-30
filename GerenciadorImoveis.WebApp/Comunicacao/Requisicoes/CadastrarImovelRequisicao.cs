@@ -3,8 +3,7 @@
     public class CadastrarImovelRequisicao
     {
         public long CadastradoPorId { get; set; }
-        public int TipoImovel { get; set; }
-        public int ImovelStatus { get; set; }
+        public int TipoImovel { get; set; }        
         public long ProprietarioId { get; set; }
         public string Logradouro { get; set; }
         public string Bairro { get; set; }
